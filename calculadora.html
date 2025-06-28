@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 300px;
+    }
+    input, button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Calculadora</h1>
+  
+  <input type="number" id="num1" elipse="Número 1">
+  <input type="number" id="num2" elipse="Número 2">
+  <br>
+
+  <button onclick="calcular('+')">+</button>
+  <button onclick="calcular('-')">-</button>
+  <button onclick="calcular('*')">*</button>
+  <button onclick="calcular('/')">/</button>
+  
+  <h2>Resultado: <span id="resultado">--</span></h2>
+
+  <script>
+    function calcular(operador) {
+      let n1 = parseFloat(document.getElementById('num1').value);
+      let n2 = parseFloat(document.getElementById('num2').value);
+      let res;
+
+      if (isNaN(n1) || isNaN(n2)) {
+        res = "Error: Ingresa dos números.";
+      } else {
+        switch (operador) {
+          case '+': res = n1 + n2; break;
+          case '-': res = n1 - n2; break;
+          case '*': res = n1 * n2; break;
+          case '/': 
+            res = n2 !== 0 ? n1 / n2 : "Error: División por cero";
+            break;
+        }
+      }
+      document.getElementById('resultado').textContent = res;
+    }
+    class Calculadora {
+    
+    static sumar(a, b){
+        return a+b;
+    }
+    static restar(a, b){
+        return a-b;
+    }
+    static multiplicar(a, b){
+        return a*b;
+    }
+    static dividir(a, b){
+        if (b===0){
+            return 'No puedes dividir por cero';
+        }else{
+            return a/b;    
+        }
+    }
+    static potencia(a, b){
+        return a**b;
+    }
+};
+  </script>
+</body>
+</html>
